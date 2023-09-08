@@ -1,0 +1,9 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+# config/routes.yaml
+
+app_reclamation_statistics:
+    path: '/reclamation/stat'
+    controller: 'App\Controller\ReclamationController::statistics'
+

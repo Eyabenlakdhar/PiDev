@@ -1,0 +1,14 @@
+{% extends 'front.html.twig' %}
+
+
+{% block body %}
+
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+<div style="margin:20px;gap:20px;display:flex;justify-content:center;align-items:center;">
+    <button class="btn btn-primary" style="width:100%;">{{ button_label|default('Login') }}</button>
+      
+</div>
+{{ form_end(form) }}
+{% endblock %}

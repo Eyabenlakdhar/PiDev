@@ -1,0 +1,48 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Reservation List{% endblock %}
+
+{% block body %}
+    <h1>Reservation List </h1>
+    <div style="display:flex;flex-wrap:wrap;">
+        <a href="{{ path('app_trieascc') }}" class="bi bi-arrow-up col-md12" style="flex-grow:1; text-align:center;">Sort ASC</a>
+    <a href="{{ path('app_triedescc') }}" class="bi bi-arrow-down" style="flex-grow:1;text-align:center;">Sort DESC</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>reservation Date </th>
+                <th>Type</th>
+                <th>Price /hour</th>
+                <th>Comment</th>
+                
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.dateRes ? reservation.dateRes|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.type }}</td>
+                <td>{{ reservation.price }}$</td>
+                <td>{{ reservation.comment }}</td>
+              
+                <td>
+                    <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a>
+                    <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" style="color : green;">Edit</a>
+                    <a href="{{ path('app_reservation_delete', {'id': reservation.id}) }}" style="color : red; ">Delete</a>
+                    <a href="{{ path('mailing', {'id': reservation.id})}}" style="color : bleu;"><strong>send Confimation</strong></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reservation_new') }}" class="bi bi-cart-plus">Create new</a>
+{% endblock %}

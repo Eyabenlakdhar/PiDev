@@ -1,0 +1,18 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}New Reservation{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/frontOffice/css/styles.css') }}">
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div>
+    <h1 class="page-title" style="color : #007bff; padding : 50px;" >Create New Reservation</h1>
+
+    {{ include('reservation/_form.html.twig') }}
+
+    <a href="{{ path('mesreservation') }}">back to list</a>
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+<div style="margin:20px;gap:20px;display:flex;justify-content:center;align-items:center;">
+    <a class="btn btn-secondary"  style="width:20%;" href="{{ path('app_reclamation_index') }}">Back to List</a>
+    <button class="btn btn-primary" style="width:20%;">{{ button_label|default('Create') }}</button>
+      
+</div>
+{{ form_end(form) }}
