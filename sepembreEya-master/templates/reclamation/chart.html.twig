@@ -1,0 +1,34 @@
+{% extends 'back.html.twig' %}
+{% block javascripts %}
+{% endblock %}
+
+{% block body %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div style="width: 100%; margin: auto;">
+        <canvas id="reclamationChart" width="400" height="200"></canvas>
+
+    </div>
+    <center >
+        <a class="btn btn-secondary"  style="width:20%;" href="{{ path('app_reclamation_index') }}">Back to List</a>
+    </center>
+    <script>
+        const data = {{ data | json_encode|raw }};
+
+        const labels = data.map(item => item.etatReservation ? 'Closed' : 'Open');
+        const values = data.map(item => item.count);
+
+        const ctx = document.getElementById('reclamationChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Reclamations',
+                    data: values,
+                    backgroundColor: ['blue', 'red'], // Customize colors as needed
+                }],
+            },
+        });
+    </script>
+{% endblock %}

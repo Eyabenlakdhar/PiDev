@@ -1,0 +1,62 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Reclamation List{% endblock %}
+
+{% block body %}
+    <div style="position:relative;width:100%;">
+        <div style="position:absolute;right:0;width:20%;">
+            <a style="width:100%;" href="{{ path('app_reclamation_stat') }} " class="btn btn-info" >Stat</a>
+        </div>
+    </div>
+    <h1 >Reclamations List</h1>
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;align-items:center">
+    <a href="{{ path('app_trieasc') }}" class="bi bi-arrow-up" >Sort (Date) ASC</a>
+    <a href="{{ path('app_triedesc') }}" class="bi bi-arrow-down" >Sort (Date) DESC</a>
+    
+    <a href="{{ path('app_trieasc') }}" class="bi bi-arrow-up" >Sort (Date) ASC</a>
+    <a href="{{ path('app_triedesc') }}" class="bi bi-arrow-down" >Sort (Date) DESC</a>
+
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Subject</th>
+                <th>Date reclamation</th>
+                <th>Reclamation</th>
+                <th>Etat du Reclamation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% set i=1 %}
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ i }}</td>
+                {% set i=i+1 %}
+                <td>{{ reclamation.recSubject }}</td>
+                
+                <td>{{ reclamation.dateRec ? reclamation.dateRec|date('Y-m-d') : '' }}</td>
+                <td>{{ reclamation.recText }}</td>
+                {% set isClosed = reclamation.etatReservation == true %}
+                <td>{{ isClosed ? "Closed" : "Open" }}</td>
+                <td>
+                    <a href="{{ path('app_reclamation_show', {'id': reclamation.id}) }}" class="btn btn-secondary">Show</a>
+                    {% if app.user != reclamation.getIdUser %}
+                    <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}" class="btn btn-success">{{  isClosed ? "Closed" : "Respond" }} </a>
+                    {% endif %}
+                    <a href="{{ path('app_reclamation_delete', {'id': reclamation.id}) }} " class="btn btn-danger">Delete</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reclamation_new') }}" class="bi bi-cart-plus">Create new</a>
+{% endblock %}

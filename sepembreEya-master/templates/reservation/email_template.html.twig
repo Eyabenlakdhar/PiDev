@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Congratulation , your reservation is successfuly confirm</title>
+</head>
+<body>
+    <h1>Email Template Content</h1>
+    <p>hello Mr, first of all thank you for your confiance in our up , then your reservation for a  {{reservation.type}} with a price :{{reservation.price}} $ hourly is accepted with your choosen date : {{ reservation.dateRes ? reservation.dateRes|date('Y-m-d') : '' }}  </p>
+</body>
+</html>
