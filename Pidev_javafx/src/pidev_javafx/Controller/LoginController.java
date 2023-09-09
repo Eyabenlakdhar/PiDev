@@ -98,7 +98,6 @@ public class LoginController implements Initializable {
             sc.setParent(this.parent);
             this.parent.getDocument().getChildren().setAll(root);
         }catch(Exception e){
-            
         }
     }
     public void setParent(AuthenticationController c){

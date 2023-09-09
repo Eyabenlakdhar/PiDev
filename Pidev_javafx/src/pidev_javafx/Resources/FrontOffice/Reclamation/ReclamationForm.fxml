@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" styleClass="main" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="pidev_javafx.Controller.FrontOffice.ReclamationFormController">
+<AnchorPane id="AnchorPane" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" styleClass="main" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.Controller.FrontOffice.Reclamation.ReclamationFormController">
     <stylesheets>
         <URL value="@/pidev_javafx/Resources/style.css" />
     </stylesheets>
@@ -70,7 +70,7 @@
                   </HBox>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <TextArea fx:id="rec_subject" layoutX="101.0" prefHeight="200.0" prefWidth="200.0" promptText="Reclamation Description" stylesheets="@../style.css" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <TextArea fx:id="rec_subject" layoutX="101.0" prefHeight="200.0" prefWidth="200.0" promptText="Reclamation Description" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
                </children>

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev_javafx.Controller.FrontOffice;
+package pidev_javafx.Controller.FrontOffice.Reclamation;
 
 import java.io.IOException;
 import java.net.URL;
@@ -66,7 +66,7 @@ public class ReclamationsController implements Initializable{
             Popup popup = new Popup();
             popup.setHeight(600);
             popup.setWidth(600);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/Resources/FrontOffice/ReclamationForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/Resources/FrontOffice/Reclamation/ReclamationForm.fxml"));
             AnchorPane root = loader.load();
             ReclamationFormController controller = loader.getController();
             controller.setData(this,popup,"save",null);
@@ -89,7 +89,7 @@ public class ReclamationsController implements Initializable{
             Popup popup = new Popup();
             popup.setHeight(600);
             popup.setWidth(600);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/Resources/FrontOffice/ReclamationForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/Resources/FrontOffice/Reclamation/ReclamationForm.fxml"));
             AnchorPane root = loader.load();
             ReclamationFormController controller = loader.getController();
             controller.setData(this,popup,"update",reclamation);
@@ -130,7 +130,7 @@ public class ReclamationsController implements Initializable{
                     if(c.wasAdded()){
                         c.getAddedSubList().forEach(reclamation -> {
                             try{
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/Resources/FrontOffice/Reclamation.fxml"));
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/Resources/FrontOffice/Reclamation/Reclamation.fxml"));
                                 AnchorPane root = loader.load();
                                 ReclamationController cc = loader.getController();
                                 cc.setData(reclamation,p);
@@ -177,6 +177,11 @@ public class ReclamationsController implements Initializable{
                 }
             }
         });
+        if(Test.getModes().get(Test.getModes().size()-1)){
+            reclamations_Button.setText("Statistics");
+            reclamations_Button.setOnAction( e -> statPop());
+            adminReclamationView("");
+        }
     }
     private void statPop(){
         long trueCount = reclamations.stream().filter(reclamation -> reclamation.getEtat()).count();
@@ -191,8 +196,8 @@ public class ReclamationsController implements Initializable{
         xAxis.setLabel("Status");
         yAxis.setLabel("Count");
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.getData().add(new XYChart.Data<>("Open / Not Responded", trueCount));
-        series.getData().add(new XYChart.Data<>("Closed / Responded", falseCount));
+        series.getData().add(new XYChart.Data<>("Open / Not Responded",falseCount ));
+        series.getData().add(new XYChart.Data<>("Closed / Responded", trueCount));
         ObservableList<XYChart.Series<String, Number>> seriesList = FXCollections.observableArrayList(series);
         barChart.setData(seriesList);
         FlowPane pane = new FlowPane();

@@ -54,7 +54,7 @@ public class Test  extends Application  {
             }
         });
          try{
-            scene = new Scene(FXMLLoader.load(getClass().getResource("/pidev_javafx/Resources/Authentication.fxml")), 800, 600);
+            scene = new Scene(FXMLLoader.load(getClass().getResource("/pidev_javafx/Resources/Authentication.fxml")), 800, 550);
             primaryStage.setTitle("Pidev Septembre 2K23");
             primaryStage.setMinHeight(400);
             primaryStage.setMinWidth(500);
@@ -67,6 +67,8 @@ public class Test  extends Application  {
     private static Scene scene;
     public void AuthenticationView(){
              try {
+                 
+                 isAdminMode.add(false);
             scene.setRoot(FXMLLoader.load(getClass().getResource("/pidev_javafx/Resources/Authentication.fxml")));
         } catch (IOException ex) {
         }

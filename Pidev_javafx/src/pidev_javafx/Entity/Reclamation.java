@@ -6,6 +6,7 @@
 package pidev_javafx.Entity;
 
 import java.sql.Date;
+import pidev_javafx.Service.UserService;
 
 /**
  *
@@ -94,5 +95,7 @@ public class Reclamation {
     public void setReponse(String reponse) {
         this.reponse = reponse;
     }
-    
+    public User getUser(){
+        return new UserService().findOne(this.user_id);
+    }
 }
