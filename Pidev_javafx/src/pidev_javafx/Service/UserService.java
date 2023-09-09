@@ -29,14 +29,19 @@ public class UserService {
     public UserService(){
         this.cnx = DataSource.getInstance().getCnx();
     }
-    private ResultSet findOne(User u) throws SQLException{
-        PreparedStatement ps = cnx.prepareStatement("SELECT * FROM USER WHERE EMAIL = ? LIMIT 1");
-        ps.setString(1,u.getEmail().toLowerCase());
-        ResultSet rs = ps.executeQuery();
-        if(!rs.next()){
+    public User findOne(Integer id){
+        try{
+            PreparedStatement ps = cnx.prepareStatement("SELECT * FROM USER WHERE ID = ? LIMIT 1");
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return new User(rs.getInt("id"), rs.getString("email"),null, null, null);
+            }
+            return null;
+        }catch(Exception e){
             return null;
         }
-        return rs;
+        
     }
     public void Login(User u) throws SQLException,NotFound_Exception,InvalidCredentials_Exception{
         PreparedStatement ps = cnx.prepareStatement("SELECT * FROM USER WHERE EMAIL = ? LIMIT 1");

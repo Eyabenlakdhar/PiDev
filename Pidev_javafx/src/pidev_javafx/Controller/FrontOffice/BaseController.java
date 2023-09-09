@@ -19,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -107,15 +108,17 @@ public class BaseController implements Initializable {
                                 nav_links.forEach(btn -> btn.setDisable(false));
                                 home_btn.setDisable(true);     
                                 rootLabel.setText("Home");
+                                Label msg = new Label("There's nothing like Home.");
+                                msg.setAlignment(Pos.CENTER);
+                                section.getChildren().setAll(msg);
                                 break;
-
                             }
                             case 1 : {
                                 nav_links.forEach(btn -> btn.setDisable(false));
                                 reclamations_btn.setDisable(true);
                                 rootLabel.setText("Reclamations");
                                 try{
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/Resources/FrontOffice/Reclamations.fxml"));
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/Resources/FrontOffice/Reclamation/Reclamations.fxml"));
                                     AnchorPane root = loader.load();
                                     section.getChildren().setAll(root);
                                 }catch(Exception e){
@@ -128,6 +131,13 @@ public class BaseController implements Initializable {
                                 nav_links.forEach(btn -> btn.setDisable(false));
                                 reservation_btn.setDisable(true);
                                 rootLabel.setText("Reservations");
+                                try{
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/Resources/FrontOffice/Reservation/Reservations.fxml"));
+                                    AnchorPane root = loader.load();
+                                    section.getChildren().setAll(root);
+                                }catch(Exception e){
+
+                                }
                                 break;
                             }
                             default:{

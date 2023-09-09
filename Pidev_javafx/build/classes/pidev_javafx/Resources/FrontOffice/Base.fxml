@@ -72,21 +72,25 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="main" GridPane.columnIndex="1">
                <children>
-                  <MenuButton fx:id="emailLabel" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="555.0" layoutX="291.0" layoutY="15.0" mnemonicParsing="false" text="MenuButton" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                    <items>
-                      <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
-                        <MenuItem fx:id="adminSwitch" mnemonicParsing="false" onAction="#logout" text="Switch to admin" visible="false" />
-                    </items>
-                  </MenuButton>
-                  <HBox alignment="CENTER" layoutX="152.0" onMousePressed="#sliderAdjustor" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="0.0">
+                  <HBox alignment="CENTER_RIGHT" layoutX="109.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label text="User" />
-                        <Slider fx:id="roleSlider" blockIncrement="0.01" majorTickUnit="0.02" max="0.01" maxWidth="100.0" minorTickCount="1" mouseTransparent="true" snapToTicks="true">
-                           <padding>
-                              <Insets left="10.0" right="10.0" />
-                           </padding>
-                        </Slider>
-                        <Label layoutX="150.0" layoutY="10.0" text="Admin" />
+                        <HBox alignment="CENTER" onMousePressed="#sliderAdjustor">
+                           <children>
+                              <Label text="User" textOverrun="CLIP" />
+                              <Slider fx:id="roleSlider" blockIncrement="0.01" majorTickUnit="0.02" max="0.01" maxWidth="100.0" minorTickCount="1" mouseTransparent="true" snapToTicks="true">
+                                 <padding>
+                                    <Insets left="10.0" right="10.0" />
+                                 </padding>
+                              </Slider>
+                              <Label layoutX="150.0" layoutY="10.0" text="Admin" textOverrun="CLIP" />
+                           </children>
+                        </HBox>
+                        <MenuButton fx:id="emailLabel" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="555.0" mnemonicParsing="false" text="example@example.example" textOverrun="CLIP">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
+                              <MenuItem fx:id="adminSwitch" mnemonicParsing="false" onAction="#logout" text="Switch to admin" visible="false" />
+                          </items>
+                        </MenuButton>
                      </children>
                   </HBox>
                </children>

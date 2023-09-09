@@ -31,10 +31,11 @@ public class ReservationService implements Service<Reservation> {
             ResultSet rs = db.createStatement().executeQuery("Select * from reservation");
             HashMap<Integer, Reservation> reservations = new HashMap();
             while(rs.next()){
-                reservations.put(rs.getRow(), new Reservation(rs.getInt("id"), rs.getDate("date_res"), rs.getString("type"), rs.getString("comment "),rs.getDouble("price"), rs.getInt("id_user_id")));
+                reservations.put(rs.getRow(), new Reservation(rs.getInt("id"), rs.getDate("date_res"), rs.getString("type"), rs.getString("comment"),rs.getDouble("price"), rs.getInt("id_user_id")));
             }
             return reservations;
         }catch(Exception e){
+            System.out.println(e.getMessage());
             return null;
         }
     }
@@ -43,7 +44,7 @@ public class ReservationService implements Service<Reservation> {
     @Override
     public void create(Reservation t) {
         try{
-            PreparedStatement ps = db.prepareStatement("insert into reservation (date_rec, type, comment, price, id_user_id) values (?,?,?,?,?)");
+            PreparedStatement ps = db.prepareStatement("insert into reservation (date_reS, type, comment, price, id_user_id) values (?,?,?,?,?)");
             ps.setDate(1, t.getDate_res());
             ps.setString(2, t.getType());
             ps.setString(3, t.getComment());
@@ -51,6 +52,7 @@ public class ReservationService implements Service<Reservation> {
             ps.setInt(5, Session.getUser().getId());
             ps.executeUpdate();
         }catch(Exception e){
+            System.out.println(e);
         }
     }
 
